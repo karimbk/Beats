@@ -1,0 +1,50 @@
+<% content_for :video_background, "#{asset_path "beats4.mp4"}" %>
+<% content_for :css_class, "new-gif" %>
+<% content_for :video_class, "not-centred" %>
+
+<div class=" list-new">
+    <h3 class="mailing-list-heading"><i class="fa fa-heart" style="font-size:50px;"aria-hidden="true"></i><br><br>Members informations</h3>
+    <div class="row">
+        <%= form_for(@raver, as: resource_name, url: registration_path(@raver), :html => {class: 'form-horizontal col-xs-12 col-sm-2 col-sm-offset-5' }) do |f| %>
+            <%= devise_error_messages! %>
+            <% if !params[:email].present? %>
+                <div class="form-group">
+                    <%= f.label :email, class: "sr-only" %>
+                    <%= f.text_field :email, placeholder:"email" ,class: "form-control transparent",rows: 3, required: true %>
+                </div>
+            <% end -%>
+            <div class="form-group">
+                <%= f.label :name, class: "sr-only" %>
+                <%= f.text_field :name, placeholder:"Name" ,class: "form-control transparent",rows: 3, required: true %>
+            </div>
+            <div class="form-group">
+                <%= f.label :surname, class: "sr-only" %>
+                <%= f.text_field :surname, placeholder:"Surname", class: "form-control transparent", rows: 3, required: true %>
+            </div>
+            <div class="form-group">
+                <%= f.label :town, class: "sr-only" %>
+                <%= f.text_field :town, placeholder:"Town", class: "form-control transparent", rows: 2, required: true %>
+            </div>
+            <div class="form-group">
+                <%= f.label :phone, class: "sr-only" %>
+                <%= f.text_field :phone, placeholder:"Telephone", class: "form-control transparent",rows: 8, required: true %>
+            </div>
+
+            <div class="form-group">
+            <%= f.label :password, class: "sr-only"  %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, placeholder:"password", class: "form-control transparent", autocomplete: "off" %>
+
+            <%= f.label :password_confirmation, class: "sr-only"  %><br />
+            <%= f.password_field :password_confirmation, placeholder:"password confirmation", class: "form-control transparent", autocomplete: "off" %>
+            </div>
+            <div class="actions">
+            <%= f.submit "Sign up", class: "btn btn-danger" %>
+            </div>
+            <%= render "frontend/ravers/shared/links" %>
+        <% end %>
+    </div>
+</div>
+

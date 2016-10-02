@@ -1,0 +1,50 @@
+<% content_for :pagename, "Ravers" %>
+
+<% content_for :breadcrumb do %>
+  <%= bc_link "Home", admin_path %>
+  <%= bc_link "Ravers" %>
+<% end %>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Ravers <span class="badge"><%= @ravers.count %></span></h3>
+    <% link_to icon("plus-circle"), new_backend_raver_path, class:"btn" %>
+  </div>
+  <div class="panel-body">
+        <div class="col-md-6 chart">
+          <%= pie_chart Raver.group(:town).count , colors: ["#08415C", "#c75c5c","#6B818C", "#F4D35E"] %>
+        </div>
+        <div class="col-md-6">
+            <%= line_chart Raver.group_by_hour(:created_at).count , colors: ["#c75c5c"] %>
+        </div>
+    <div class="table-responsive">
+
+      <table class="table table-condensed table-bordered table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>telephone</th>
+            <th>Ville</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @ravers.each do |raver| %>
+            <tr>
+              <td><%= link_to raver.name, backend_raver_path(raver) %></td>
+              <td><%= raver.surname %></td>
+              <td><%= raver.email %></td>
+              <td><%= raver.phone %></td>
+              <td><%= raver.town %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,36 @@
+<% content_for :pagename, "Ravers" %>
+
+<% content_for :breadcrumb do %>
+  <%= bc_link "Home", admin_path %>
+  <%= bc_link "Ravers" %>
+<% end %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Profile <%= @raver.name %><span class="badge"></span></h3>
+      <%= link_to backend_raver_path(@raver) , method: :delete , data: {confirm: "etes vous sure?"} do %>
+        <i class="fa fa-trash fa-2x trash" aria-hidden="true"></i>
+      <% end -%>
+      <%= link_to  edit_backend_raver_path(@raver) do %>
+      <i class="fa fa-pencil fa-2x pancel" aria-hidden="true"></i>
+      <%end%>
+  </div>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <dt>Nom:</dt>
+      <dd><%= @raver.name %></dd>
+      <dt>Prenom:</dt> 
+      <dd><%= @raver.surname %></dd>
+      <dt>Email:</dt>
+      <dd><%= @raver.email %></dd>
+      <dt>telephone:</dt>
+      <dd><%= @raver.phone %></dd>
+      <dt>Ville:</dt>
+      <dd><%= @raver.town %></dd>
+    </dl>
+  </div>
+</div>
+
+
+
+

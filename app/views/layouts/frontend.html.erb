@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <title>BeatsExp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Pacifico">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+	<%= stylesheet_link_tag    'frontend', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'frontend', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+  <link rel="shortcut icon" type="image/x-icon" href="<%= image_path "favicon.png" %>" />
+  <script src="https://use.fontawesome.com/eae48e4e0d.js"></script>
+</head>
+<body>
+<div  class="main <%= yield :css_class %>"> 
+  <!-- video background-->
+  <!-- replace URLs with your video content URL-->
+  <video id="video-background" class="<%= yield :video_class %>" preload="none" autoplay="true" loop="loop" muted="muted" volume="0">
+    
+    <source src="<%= yield :video_background %>" type="video/mp4">
+    <source src="img/beats.m4v">
+    <source src="img/beats.webm" type="video/webm">
+    <source src="img/beats.theora.ogv" type="video/ogg">
+    Browser doesen't support this graphic
+  </video>
+  <div class="overlay"></div>
+  <div id="content" class="container">
+    <p class="social white" style="position:relative;">
+    <% if raver_signed_in? %> 
+        Logout
+        <%= link_to  destroy_raver_session_path , method: :delete, class: "twitter" do %>
+            <i class="fa fa-sign-out " aria-hidden="true"></i>
+        <% end %>
+    <% else %>
+        Login
+        <%= link_to  new_raver_session_path , class: "instagram" do %>
+             <i class="fa fa-heart " aria-hidden="true"></i>
+        <% end %>
+    <% end %>
+    <a href="https://www.facebook.com/beats.autonomica/" target="_blank" title="BeAtS Facebook Page" class="facebook"><i class="fa fa-facebook"></i></a>
+    </p>
+    <% flash.each do |name, msg| %>
+        <% if msg.is_a?(String) %>
+            <div class="col-md-8 col-md-offset-2 transparent alert alert-<%= name == "notice" ? "success" : "danger" %>" style="margin-top:25px;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <%= content_tag :div, msg, id:"flash_#{name}" %>
+            </div>
+            <br>
+        <% end %>
+    <% end %>
+
+    <%= yield %>
+    </div>
+
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>&copy;2016 made with <i class="fa fa-heart" aria-hidden="true"></i> by BeAtS Exp</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+

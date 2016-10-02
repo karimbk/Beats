@@ -1,0 +1,25 @@
+<% content_for :video_background, "#{asset_path "beats.mp4"}" %>
+<% content_for :css_class, "main-gif" %>
+<% content_for :video_class, "not-centred" %>
+
+<div class="list-new">
+	<div class="mailing-list">
+	    <h3 class="mailing-list-heading"><i class="fa fa-heart fa-4x" aria-hidden="true"></i><br>Forgot your password?</h3>
+	    <div class="row">
+			<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: 'form-horizontal col-xs-12 col-sm-4 col-sm-offset-4' , method: :post }) do |f| %>
+			  <%= devise_error_messages! %>
+				<div class="form-group">
+					<%= f.label :email, class:"sr-only" %>s
+					<%= f.email_field :email, placeholder:"example@email.com", class:"form-control transparent col-xs-2" , autofocus: true %>
+				</div>
+				<div class="form-group" >
+					<%= f.submit "Send me reset password instructions", class: "btn btn-danger" %>
+				</div>
+			<% end %>
+	    </div>
+		<%= render "frontend/ravers/shared/links" %>       
+	</div>
+
+</div>
+
+

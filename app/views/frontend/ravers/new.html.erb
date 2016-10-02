@@ -1,0 +1,30 @@
+<% content_for :video_background, "#{asset_path "beats4.mp4"}" %>
+<% content_for :css_class, "new-gif" %>
+<% content_for :video_class, "not-centred" %>
+<div id="content" class="container">
+    <p class="social"><a href="#" title="" class="facebook"><i class="fa fa-facebook"></i></a><a href="#" title="" class="instagram"><i class="fa fa-instagram"></i></a></p>
+    <div class=" list-new">
+        <h3 class="mailing-list-heading"><i class="fa fa-heart" style="font-size:50px;"aria-hidden="true"></i><br><br>Members informations</h3>
+        <div class="row">
+            <%=form_for [:frontend, @raver] , :html => {class: 'form-horizontal col-xs-12 col-sm-2 col-sm-offset-5' } do |f| %>
+                <div class="form-group">
+                    <%= f.label :name, class: "sr-only" %>
+                    <%= f.text_field :name, placeholder:"Name" ,class: "form-control transparent",rows: 3, required: true %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :surname, class: "sr-only" %>
+                    <%= f.text_field :surname, placeholder:"Surname", class: "form-control transparent", rows: 3, required: true %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :town, class: "sr-only" %>
+                    <%= f.text_field :town, placeholder:"Town", class: "form-control transparent", rows: 2, required: true %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :phone, class: "sr-only" %>
+                    <%= f.text_field :phone, placeholder:"Telephone", class: "form-control transparent",rows: 8, required: true %>
+                </div>
+                    <%= f.submit "Join us", class: "btn btn-danger" %>
+            <% end %>
+        </div>
+    </div>
+</div>

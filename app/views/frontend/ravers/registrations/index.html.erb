@@ -1,0 +1,19 @@
+<% content_for :video_background, "#{asset_path "beats.mp4"}" %>
+<% content_for :css_class, "main-gif" %>
+<% content_for :video_class, "not-centred" %>
+
+
+<h1 class="cursive">BeAtS</h1>
+<h2 class="sub"><i class="fa fa-heart" aria-hidden="true"></i></h2>
+<div class="mailing-list">
+    <h3 class="mailing-list-heading">Join our member list to know the date!</h3>
+    <div class="row">
+        <%=form_tag new_raver_registration_path, method: :get , class: "form-inline"  do %>
+            <div class="form-group">
+                <%= label_tag :email, "",class:"sr-only"%>
+                <%= email_field_tag :email, " ", placeholder:"example@email.com", class:"form-control transparent col-xs-4" ,rows: 6, required: true %>
+                <%= submit_tag "Join Now" , class: "btn btn-danger" %>
+            </div>
+        <% end %>
+    </div>
+</div>
