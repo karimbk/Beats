@@ -1,11 +1,21 @@
 # config valid only for current version of Capistrano
 lock '3.6.1'
 
-set :application, 'my_app_name'
-set :repo_url, 'git@example.com:me/my_repo.git'
+set :application, 'my-app'
+set :repo_url, 'https://github.com/amine4videri/Beats-production.git'
+set :rbenv_path, '/home/beatsadmin/.rbenv/'
+set :rbenv_ruby, '2.2.4'
+
+ desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute "service thin restart"  ## -> line you should add
+    end
+  end
+
 
 # Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+# ask :branch, `git rev-pars  e --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, '/var/www/my_app_name'
@@ -17,7 +27,7 @@ set :repo_url, 'git@example.com:me/my_repo.git'
 # set :format, :airbrussh
 
 # You can configure the Airbrussh format using :format_options.
-# These are the defaults.
+# These are the defaults.l
 # set :format_options, command_output: true, log_file: 'log/capistrano.log', color: :auto, truncate: :auto
 
 # Default value for :pty is false

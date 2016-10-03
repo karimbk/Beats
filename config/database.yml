@@ -19,6 +19,17 @@ development:
 
 
 
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: beats_database
+  host: localhost
+  username: beats
+  password: beatsdbkey
+  pool: 5
+
+
+
 
 
 
