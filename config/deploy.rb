@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.6.1'
 
-set :application, 'my-app'
+set :application, 'beats'
 set :repo_url, 'https://github.com/amine4videri/Beats-production.git'
 set :rbenv_path, '/home/beatsadmin/.rbenv/'
 set :rbenv_ruby, '2.2.4'
@@ -14,7 +14,7 @@ set :pty,             true
 set :use_sudo,        false
 set :stage,           :production
 set :deploy_via,      :remote_cache
-set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
+
 set :puma_bind,       "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
 set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
 set :puma_pid,        "#{shared_path}/tmp/pids/puma.pid"
