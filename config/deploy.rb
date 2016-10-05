@@ -5,7 +5,7 @@ set :application, 'beats'
 set :repo_url, 'https://github.com/amine4videri/Beats-production.git'
 set :rbenv_path, '/home/beatsadmin/.rbenv/'
 set :rbenv_ruby, '2.2.4'
-set :user, 'beatadmin'
+set :user, 'beatsadmin'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
