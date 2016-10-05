@@ -83,6 +83,10 @@ namespace :deploy do
   after  :finishing,    :restart
 end
 
+after 'deploy:started', 'reenable_phased_restart'
+task :reenable_phased_restart do
+  ::Rake.application['puma:restart'].reenable
+end
 # ps aux | grep puma    # Get puma pid
 # kill -s SIGUSR2 pid   # Restart puma
 # kill -s SIGTERM pid   # Stop puma
