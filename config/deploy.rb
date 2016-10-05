@@ -78,12 +78,12 @@ namespace :deploy do
   end
 
   before :starting,     :check_revision
+  after :starting, 'reenable_phased_restart'
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
 end
 
-after 'deploy:started', 'reenable_phased_restart'
 task :reenable_phased_restart do
   ::Rake.application['puma:restart'].reenable
 end
