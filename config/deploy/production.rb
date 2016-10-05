@@ -21,8 +21,8 @@
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
 
-server '138.68.82.92', user: 'beatsadmin', roles: %w{web app}
 
+ 
 # The server-based syntax can be used to override options:
 # ------------------------------------
 # server 'example.com',

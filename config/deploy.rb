@@ -1,11 +1,11 @@
 # config valid only for current version of Capistrano
-lock '3.6.1'
+server '138.68.82.92', port: 7171, roles: [:web, :app, :db], primary: true
 
 set :application, 'beats'
 set :repo_url, 'https://github.com/amine4videri/Beats-production.git'
 set :rbenv_path, '/home/beatsadmin/.rbenv/'
 set :rbenv_ruby, '2.2.4'
-
+set :user, 'beatadmin'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
