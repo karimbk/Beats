@@ -50,6 +50,7 @@ end
 
 namespace :deploy do
   desc "Make sure local git is in sync with remote."
+  Rake::Task['puma:restart'].reenable
   task :check_revision do
     on roles(:app) do
       unless `git rev-parse HEAD` == `git rev-parse origin/master`
@@ -63,7 +64,6 @@ namespace :deploy do
   desc 'Initial Deploy'
   task :initial do
     on roles(:app) do
-      Rake::Task['puma:restart'].reenable
       before 'deploy:restart', 'puma:start'
       invoke 'deploy'
     end
