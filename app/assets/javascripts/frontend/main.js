@@ -2,15 +2,3 @@
 
 },{}]},{},[1])
 
-$( document ).ready(function() {
-
-	var video = document.getElementById("video-background");
-	video.play();
-	
-
-	var clicker = document.getElementById('content');
-		clicker.addEventListener('click',function(){
-	  video.play();
-	  console.log("video working");
-	},false);
-});

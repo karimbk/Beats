@@ -65,8 +65,6 @@ namespace :deploy do
   task :initial do
     on roles(:app) do
       before 'deploy:restart', 'puma:start'
-      Rake::Task['puma:restart'].
-      Rake::Task['puma:start'].reenable
       invoke 'deploy'
     end
   end
@@ -80,15 +78,12 @@ namespace :deploy do
   end
 
   before :starting,     :check_revision
-  after :starting, 'reenable_phased_restart'
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
 end
 
-task :reenable_phased_restart do
-  ::Rake.application['puma:restart'].reenable
-end
+
 # ps aux | grep puma    # Get puma pid
 # kill -s SIGUSR2 pid   # Restart puma
 # kill -s SIGTERM pid   # Stop puma
