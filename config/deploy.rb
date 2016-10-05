@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-server '138.68.82.92', roles: [:web, :app, :db], primary: true
+server '138.68.82.92', port: 7171, roles: [:web, :app, :db], primary: true
 
 set :application, 'beats'
 set :repo_url, 'https://github.com/amine4videri/Beats-production.git'
