@@ -13,8 +13,6 @@ development:
   encoding: unicode
   database: beats_development
   host: localhost
-  username: beats
-  password: beatsdbkey
   pool: 5
 
 
