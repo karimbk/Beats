@@ -1,4 +1,4 @@
-s# config valid only for current version of Capistrano
+# config valid only for current version of Capistrano
 server '138.68.82.92', roles: [:web, :app, :db], primary: true
 
 set :application, 'beats'
@@ -8,6 +8,7 @@ set :rbenv_ruby, '2.2.4'
 set :user, 'beatsadmin'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
+
 
 # Don't change these unless you know what you're doing
 set :pty,             true
@@ -81,9 +82,6 @@ namespace :deploy do
   after  :finishing,    :restart
 end
 
-
 # ps aux | grep puma    # Get puma pid
 # kill -s SIGUSR2 pid   # Restart puma
 # kill -s SIGTERM pid   # Stop puma
-
-
