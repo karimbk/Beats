@@ -24,6 +24,7 @@ class Frontend::Ravers::RegistrationsController < Devise::RegistrationsControlle
             raver.errors.each do |error|
                 puts error
             end
+            flash[:notice] = flash[:notice].to_a.concat raver.errors.full_messages
             redirect_to new_raver_registration_path
         end
     end
