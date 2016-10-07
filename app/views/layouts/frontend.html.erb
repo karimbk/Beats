@@ -27,7 +27,7 @@
   <% end %>
   <div class="overlay"></div>
   <div id="content" class="container">
-  <% if !(action_name == 'new' and controller_name == 'sessions') %>
+  <% if !(action_name == 'new' and (controller_name == 'sessions' or controller_name = "registrations")) %>
     <p class="social white col-xs-12 col-sm-3 col-sm-offset-9 text-center">
         <% if raver_signed_in? %> 
             Logout
