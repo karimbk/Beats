@@ -25,20 +25,27 @@
   </video>
   <div class="overlay"></div>
   <div id="content" class="container">
-    <p class="social white" style="position:relative;">
-    <% if raver_signed_in? %> 
-        Logout
-        <%= link_to  destroy_raver_session_path , method: :delete, class: "twitter" do %>
-            <i class="fa fa-sign-out " aria-hidden="true"></i>
+    <p class="social white " style="position:fixed;right:20%;">
+        <% if raver_signed_in? %> 
+            Logout
+            <%= link_to  destroy_raver_session_path , method: :delete, class: "twitter" do %>
+                <i class="fa fa-sign-out " aria-hidden="true"></i>
+            <% end %>
+        <% else %>
+            Login
+            <%= link_to  new_raver_session_path , class: "instagram" do %>
+                 <i class="fa fa-heart " aria-hidden="true"></i>
+            <% end %>
         <% end %>
-    <% else %>
-        Login
-        <%= link_to  new_raver_session_path , class: "instagram" do %>
-             <i class="fa fa-heart " aria-hidden="true"></i>
-        <% end %>
-    <% end %>
-    <a href="https://www.facebook.com/beats.autonomica/" target="_blank" title="BeAtS Facebook Page" class="facebook"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.facebook.com/beats.autonomica/" target="_blank" title="BeAtS Facebook Page" class="facebook"><i class="fa fa-facebook"></i></a>
     </p>
+    <div class="beats-nav container-row">
+        <ul class="nav nav-pills">
+          <li role="presentation" class="col-sm-3 col-sm-offset-1 text-center"><a href="#">Line Up</a></li>
+          <li role="presentation" class="col-sm-3 text-center"><a href="#">Date & Location</a></li>
+          <li role="presentation" class="col-sm-3 text-center"><a href="#">Tickets</a></li>
+        </ul>
+    </div>
     <% flash.each do |name, msg| %>
         <% if msg.is_a?(String) %>
             <div class="col-md-8 col-md-offset-2 transparent alert alert-<%= name == "notice" ? "success" : "danger" %>" style="margin-top:25px;">
