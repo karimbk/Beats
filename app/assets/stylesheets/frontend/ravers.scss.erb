@@ -1,0 +1,56 @@
+// Place all the styles related to the frontend/ravers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.white{
+	color: white;
+}
+
+.actions{
+	margin-bottom: 15px;
+}
+
+.center-gif-background-tickets{
+	padding-bottom: 170px;
+	padding-top: 200px;
+	background-image: url(<%= asset_path "giphy3.gif"%>) !important;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+@media (max-width:440px) {
+	.center-gif-background-tickets{
+		padding-bottom: 70px;
+		padding-top: 70px;
+	}
+}
+
+.center-gif-background-lineup{
+	padding-bottom: 170px;
+	padding-top: 200px;
+	background-image: url(<%= asset_path "giphy4.gif"%>) !important;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+@media (max-width:440px) {
+	.center-gif-background-lineup{
+		padding-bottom: 70px;
+		padding-top: 70px;
+	}
+}
+
+.repeat-gif-background-date{
+	padding-bottom: 170px;
+	padding-top: 200px;
+	background-image: url(<%= asset_path "giphy8.gif" %>) !important;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+@media (max-width:440px) {
+	.repeat-gif-background-date{
+		padding-bottom: 70px;
+		padding-top: 70px;
+	}
+}

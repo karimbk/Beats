@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
 
 	def after_sign_in_path_for(resource)
     # check for the class of the object to determine what type it is
-      ravers_date_path  
+      date_path  
 	end
 end

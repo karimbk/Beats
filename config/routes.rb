@@ -16,9 +16,11 @@ Rails.application.routes.draw do
   namespace :frontend do
     resources :ravers
   end
-
-  get "ravers/date", to: "frontend/ravers#date"
+  get "lineup", to: "frontend/ravers#lineup"
+  get "date", to: "frontend/ravers#date"
+  get "tickets", to: "frontend/ravers#tickets"
   post "ravers/new",  to: "frontend/ravers#new"
+
   # You can have the root of your site routed with "root"
   namespace :backend do
     resources :ravers

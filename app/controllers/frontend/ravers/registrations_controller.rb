@@ -3,6 +3,9 @@ class Frontend::Ravers::RegistrationsController < Devise::RegistrationsControlle
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
     def index
+      if raver_signed_in?
+        redirect_to date_path 
+      end
       @gif_background = ActionController::Base.helpers.asset_path('beats3.gif')
     end
   # GET /resource/sign_up

@@ -57,7 +57,7 @@
   height: 120%;
 }
 
-@media (max-width: 412px) {
+@media (max-width: 420px) {
   .main-gif {
       background-image: url(<%= asset_path "beats3.gif"%>) !important;
       background-position: center !important;
@@ -324,10 +324,7 @@
 .nav > li > a {
   padding: 10px 15px;
 }
-.nav > li > a:hover,
-.nav > li > a:focus {
-  background-color: #eeeeee;
-}
+
 .nav > li.disabled > a {
   color: #999999;
 }
@@ -351,22 +348,11 @@
 .nav-tabs > li > a:hover {
   border-color: #eeeeee #eeeeee #dddddd;
 }
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:hover,
-.nav-tabs > li.active > a:focus {
-  color: #555555;
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
-}
+
 .nav-pills > li > a {
   border-radius: 0;
 }
-.nav-pills > li.active > a,
-.nav-pills > li.active > a:hover,
-.nav-pills > li.active > a:focus {
-  color: #ffffff;
-  background-color: #4fbfa8;
-}
+
 .nav-tabs-justified > li > a {
   border-radius: 4px;
 }
@@ -1046,7 +1032,17 @@ a.list-group-item.active > .badge,
   margin-bottom: 10px;
 }
 
-.beats-nav{
-    position: fixed;
-    top: 16px;
+.social{
+  position:fixed; 
+  top:15%;
+  left:0;
+  z-index: 10000;
+
+  @media (min-width:500px){
+    top:0%;
+  }
+}
+
+.black-background{
+  background-color:black;
 }

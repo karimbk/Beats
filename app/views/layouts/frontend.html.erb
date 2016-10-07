@@ -15,17 +15,19 @@
 <div  class="main <%= yield :css_class %>"> 
   <!-- video background-->
   <!-- replace URLs with your video content URL-->
-  <video id="video-background" class="<%= yield :video_class %>" preload="none" autoplay="true" loop="loop" muted="muted" volume="0">
-    
-    <source src="<%= yield :video_background %>" type="video/mp4">
-    <source src="img/beats.m4v">
-    <source src="img/beats.webm" type="video/webm">
-    <source src="img/beats.theora.ogv" type="video/ogg">
-    Browser doesen't support this graphic
-  </video>
+  <% if !(action_name == 'tickets' or action_name == 'lineup' or action_name == 'date') %>
+    <video id="video-background" class="<%= yield :video_class %>" preload="none" autoplay="true" loop="loop" muted="muted" volume="0">
+      
+      <source src="<%= yield :video_background %>" type="video/mp4">
+      <source src="img/beats.m4v">
+      <source src="img/beats.webm" type="video/webm">
+      <source src="img/beats.theora.ogv" type="video/ogg">
+      Browser doesen't support this graphic
+    </video>
+  <% end %>
   <div class="overlay"></div>
   <div id="content" class="container">
-    <p class="social white " style="position:fixed;right:20%;">
+    <p class="social white col-xs-12 col-sm-3 col-sm-offset-9 text-center">
         <% if raver_signed_in? %> 
             Logout
             <%= link_to  destroy_raver_session_path , method: :delete, class: "twitter" do %>
@@ -39,16 +41,18 @@
         <% end %>
             <a href="https://www.facebook.com/beats.autonomica/" target="_blank" title="BeAtS Facebook Page" class="facebook"><i class="fa fa-facebook"></i></a>
     </p>
-    <div class="beats-nav container-row">
-        <ul class="nav nav-pills">
-          <li role="presentation" class="col-sm-3 col-sm-offset-1 text-center"><a href="#">Line Up</a></li>
-          <li role="presentation" class="col-sm-3 text-center"><a href="#">Date & Location</a></li>
-          <li role="presentation" class="col-sm-3 text-center"><a href="#">Tickets</a></li>
-        </ul>
-    </div>
+    <% if raver_signed_in? %> 
+      <div class="beats-nav container-row">
+          <ul class="nav nav-pills">
+            <li role="presentation" class="nav-el col-sm-2 col-sm-offset-3 col-xs-4 text-center <%= beats_menu_activ("lineup")%> "><%= link_to "LINE UP", lineup_path, class: "nav-el" %></li>
+            <li role="presentation" class="col-sm-2 col-xs-4 text-center  <%= beats_menu_activ("date") %>"><%= link_to "DATE & LOCATION", date_path %></li>
+            <li role="presentation" class="col-sm-2 col-xs-3 text-center <%= beats_menu_activ("tickets") %>"><%= link_to 'TICKETS', tickets_path %></li>
+          </ul>
+      </div>
+    <% end -%>
     <% flash.each do |name, msg| %>
         <% if msg.is_a?(String) %>
-            <div class="col-md-8 col-md-offset-2 transparent alert alert-<%= name == "notice" ? "success" : "danger" %>" style="margin-top:25px;">
+            <div class="col-md-10 col-md-offset-1 transparent alert alert-<%= name == "notice" ? "success" : "danger" %>" style="margin-top:68px;">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <%= content_tag :div, msg, id:"flash_#{name}" %>
             </div>
