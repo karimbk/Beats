@@ -21,7 +21,7 @@ class Frontend::Ravers::RegistrationsController < Devise::RegistrationsControlle
         raver.email = session[:email]
         if raver.update(sign_up_params)
             sign_in raver
-            redirect_to ravers_date_path
+            redirect_to date_path
         else
             puts raver.valid?
             raver.errors.each do |error|
