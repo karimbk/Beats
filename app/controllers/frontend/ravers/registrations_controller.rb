@@ -23,7 +23,6 @@ class Frontend::Ravers::RegistrationsController < Devise::RegistrationsControlle
             sign_in raver
             redirect_to date_path
         else
-            puts raver.valid?
             raver.errors.each do |error|
                 puts error
             end
