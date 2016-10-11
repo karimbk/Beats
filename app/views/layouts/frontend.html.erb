@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-  <title>BeatsExp</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Pacifico">
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <title>BeatsExp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Pacifico">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
     <link href="https://fonts.googleapis.com/css?family=Exo:900" rel="stylesheet">
-	<%= stylesheet_link_tag    'frontend', media: 'all', 'data-turbolinks-track' => true %>
-	<%= javascript_include_tag 'frontend', 'data-turbolinks-track' => true %>
-	<%= csrf_meta_tags %>
-  <link rel="shortcut icon" type="image/x-icon" href="<%= image_path "favicon.png" %>" />
-  <script src="https://use.fontawesome.com/eae48e4e0d.js"></script>
+    <%= stylesheet_link_tag    'frontend', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'frontend', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <link rel="shortcut icon" type="image/x-icon" href="<%= image_path "favicon.png" %>" />
+    <script src="https://use.fontawesome.com/eae48e4e0d.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-83895531-2', 'auto');
+        ga('send', 'pageview');
+
+    </script>
 </head>
 <body>
 <div  class="main <%= yield :css_class %>"> 
   <!-- video background-->
   <!-- replace URLs with your video content URL-->
-  <% if !(action_name == 'tickets' or action_name == 'lineup' or action_name == 'date') %>
+    <% if !(action_name == 'tickets' or action_name == 'lineup' or action_name == 'date') %>
     <video id="video-background" class="<%= yield :video_class %>" preload="none" autoplay="true" loop="loop" muted="muted" volume="0">
       
       <source src="<%= yield :video_background %>" type="video/mp4">
@@ -75,7 +85,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <p>&copy;2016 made with <i class="fa fa-heart" aria-hidden="true"></i> by BeAtS Exp</p>
+          <p class="<%= set_black_footer %>">&copy;2016 made with <i class="fa fa-heart" aria-hidden="true"></i> by BeAtS Exp</p>
         </div>
       </div>
     </div>
