@@ -22,6 +22,10 @@
                 <%= f.text_field :surname, placeholder:"Surname", class: "form-control transparent", rows: 3, required: true %>
             </div>
             <div class="form-group">
+                <%= f.label :gender, class: "sr-only"%>
+                <%= f.select :gender, [["Male", 1], ["Female", 2]], {}, {class: "selectpicker form-control transparent", required: true, title: "gender" } %>
+            </div>
+            <div class="form-group">
                 <%= f.label :town, class: "sr-only" %>
                 <%= f.text_field :town, placeholder:"Town", class: "form-control transparent", rows: 2, required: true %>
             </div>

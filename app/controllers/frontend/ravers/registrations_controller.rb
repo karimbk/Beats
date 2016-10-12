@@ -63,7 +63,8 @@ class Frontend::Ravers::RegistrationsController < Devise::RegistrationsControlle
                                      :email,
                                      :password,
                                      :password_confirmation,
-                                     :phone)
+                                     :phone,
+                                     :gender)
         end
 
   # If you have extra params to permit, append them to the sanitizer.
