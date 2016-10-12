@@ -1025,7 +1025,7 @@ a.list-group-item.active > .badge,
 }
 .list-new{
   text-align: center;
-  margin-top: 38vh; /* poussé de la moitié de hauteur de viewport */
+  margin-top: 34vh; /* poussé de la moitié de hauteur de viewport */
   transform: translateY(-29%);
 }
 
@@ -1035,9 +1035,9 @@ a.list-group-item.active > .badge,
 
 .social{
   position:absolute; 
-  top:100px;
+  top:-3px;
   left:0;
-  z-index: 10000;
+  z-index: 10;
 
   @media (min-width:500px){
     top:0%;
@@ -1051,4 +1051,12 @@ a.list-group-item.active > .badge,
 .btn{
   background-color:transparent;
   border-color: white;
+}
+
+.mobileNavBar{
+    padding: 8px;
+    border: solid 1px;
+    border-color: white;
+    color: white;
+    z-index: 99999999999999;
 }

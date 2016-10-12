@@ -3,9 +3,12 @@
 <head>
     <title>BeatsExp</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Font links -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Pacifico">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
     <link href="https://fonts.googleapis.com/css?family=Exo:900" rel="stylesheet">
+          
     <%= stylesheet_link_tag    'frontend', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'frontend', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -23,9 +26,18 @@
     </script>
 </head>
 <body>
-<div  class="main <%= yield :css_class %>"> 
-  <!-- video background-->
-  <!-- replace URLs with your video content URL-->
+<div id="main" class="main <%= yield :css_class %>"> 
+    
+    <!-- Mobile side NavBar -->
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <%= link_to "Line Up", lineup_path, class: "nav-el" %>
+      <%= link_to "Date & Locatiion", date_path %>
+      <%= link_to 'Tickets', tickets_path %>
+      <%= link_to 'Apply as Volunteer', application_path %>
+    </div>
+  
+    <!-- video background-->
     <% if !(action_name == 'tickets' or action_name == 'lineup' or action_name == 'date') %>
     <video id="video-background" class="<%= yield :video_class %>" preload="none" autoplay="true" loop="loop" muted="muted" volume="0">
       
@@ -36,10 +48,12 @@
       Browser doesen't support this graphic
     </video>
   <% end %>
+    
   <div class="overlay"></div>
   <div id="content" class="container">
   <% if !(action_name == 'new' and (controller_name == 'sessions' or controller_name = "registrations")) %>
-    <p class="social white col-xs-12 col-sm-3 col-sm-offset-9 text-center">
+    <a onclick="openNav()" class="mobileNavBar fa fa-bars hidden-sm hidden-md hidden-lg"></a>
+    <p class="social white col-xs-8 col-xs-offset-4 col-sm-3 col-sm-offset-9 text-center">
         <% if raver_signed_in? %> 
             Logout
             <%= link_to  destroy_raver_session_path , method: :delete, class: "twitter" do %>
@@ -55,7 +69,7 @@
     </p>
     <% end -%>
     <% if raver_signed_in? %> 
-      <div class="beats-nav container-row">
+      <div class="beats-nav container-row hidden-xs">
           <ul class="nav nav-pills">
             <li role="presentation" class="nav-el col-sm-2 col-sm-offset-3 col-xs-4 text-center <%= beats_menu_activ("lineup")%> "><%= link_to "LINE UP", lineup_path, class: "nav-el" %></li>
             <li role="presentation" class="col-sm-2 col-xs-4 text-center  <%= beats_menu_activ("date") %>"><%= link_to "DATE & LOCATION", date_path %></li>
