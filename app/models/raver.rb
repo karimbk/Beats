@@ -3,4 +3,15 @@ class Raver < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  after_create :capitalise_town
+
+
+  private
+
+  def capitalise_town
+  	cap = self.town.upcase
+  	self.town = cap
+  	self.save
+  end
 end

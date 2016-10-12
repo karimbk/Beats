@@ -16,15 +16,14 @@
           <%= pie_chart Raver.group(:town).count , colors: ["#08415C", "#c75c5c","#6B818C", "#F4D35E"] %>
         </div>
         <div class="col-md-6">
-            <%= line_chart Raver.group_by_hour(:created_at).count , colors: ["#c75c5c"] %>
+            <%= line_chart Raver.group_by_day(:created_at).count , colors: ["#c75c5c"] %>
         </div>
     <div class="table-responsive">
 
       <table class="table table-condensed table-bordered table-striped table-hover">
         <thead>
           <tr>
-            <th>Nom</th>
-            <th>Prenom</th>
+            <th>Nom et Prenom</th>
             <th>Email</th>
             <th>telephone</th>
             <th>Ville</th>
@@ -33,8 +32,7 @@
         <tbody>
           <% @ravers.each do |raver| %>
             <tr>
-              <td><%= link_to raver.name, backend_raver_path(raver) %></td>
-              <td><%= raver.surname %></td>
+              <td><%= content_tag(:i,'',class: "fa fa-mars") if raver.gender == 1 %><%= content_tag(:i,'',class: "fa fa-venus") if raver.gender == 2 %> <%= link_to raver.name, backend_raver_path(raver) %> <%= raver.surname %></td>
               <td><%= raver.email %></td>
               <td><%= raver.phone %></td>
               <td><%= raver.town %></td>

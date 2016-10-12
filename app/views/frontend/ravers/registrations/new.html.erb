@@ -5,44 +5,57 @@
 <div class=" list-new">
     <h3 class="mailing-list-heading"><i class="fa fa-heart" style="font-size:50px;"aria-hidden="true"></i><br><br>Members informations</h3>
     <div class="row">
-        <%= form_for(@raver, as: resource_name, url: registration_path(@raver), :html => {class: 'form-horizontal col-xs-12 col-sm-2 col-sm-offset-5' }) do |f| %>
+        <%= form_for(@raver, as: resource_name, url: registration_path(@raver), :html => {class: 'form-horizontal col-xs-12 col-sm-8 col-sm-offset-2' }) do |f| %>
             <%= devise_error_messages! %>
-            <% if !params[:email].present? %>
-                <div class="form-group">
-                    <%= f.label :email, class: "sr-only" %>
-                    <%= f.text_field :email, placeholder:"email" ,class: "form-control transparent",rows: 3, required: true %>
+            <div class="row">
+                <div class="col-sm-5 col-xs-12">
+                    <% if !params[:email].present? %>
+                        <div class="form-group">
+                            <%= f.label :email, class: "sr-only" %>
+                            <%= f.text_field :email, placeholder:"email" ,class: "form-control transparent",rows: 3, required: true %>
+                        </div>
+                    <% end -%>
+                    <div class="form-group">
+                        <%= f.label :name, class: "sr-only" %>
+                        <%= f.text_field :name , placeholder:"Name" , class: "form-control transparent",rows: 3, required: true %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :surname, class: "sr-only" %>
+                        <%= f.text_field :surname, placeholder:"Surname", class: "form-control transparent", rows: 3, required: true %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :gender, class: "sr-only"%>
+                        <%= f.select :gender, [["Male", 1], ["Female", 2]], {}, {class: "selectpicker form-control transparent", required: true, title: "gender" } %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :phone, class: "sr-only" %>
+                        <%= f.text_field :phone, placeholder:"Telephone", class: "form-control transparent",rows: 8, required: true %>
+                    </div>
                 </div>
-            <% end -%>
-            <div class="form-group">
-                <%= f.label :name, class: "sr-only" %>
-                <%= f.text_field :name , placeholder:"Name" , class: "form-control transparent",rows: 3, required: true %>
-            </div>
-            <div class="form-group">
-                <%= f.label :surname, class: "sr-only" %>
-                <%= f.text_field :surname, placeholder:"Surname", class: "form-control transparent", rows: 3, required: true %>
-            </div>
-            <div class="form-group">
-                <%= f.label :gender, class: "sr-only"%>
-                <%= f.select :gender, [["Male", 1], ["Female", 2]], {}, {class: "selectpicker form-control transparent", required: true, title: "gender" } %>
-            </div>
-            <div class="form-group">
-                <%= f.label :town, class: "sr-only" %>
-                <%= f.text_field :town, placeholder:"Town", class: "form-control transparent", rows: 2, required: true %>
-            </div>
-            <div class="form-group">
-                <%= f.label :phone, class: "sr-only" %>
-                <%= f.text_field :phone, placeholder:"Telephone", class: "form-control transparent",rows: 8, required: true %>
-            </div>
+                <div class="col-sm-5 col-sm-offset-2 col-xs-12">
+                    <div class="form-group">
+                        <%= f.label :town, class: "sr-only" %>
+                        <%= f.text_field :town, placeholder:"Town", class: "form-control transparent", rows: 2, required: true %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :street, class: "sr-only" %>
+                        <%= f.text_field :street, placeholder:"Street and house number", class: "form-control transparent col-xs-8", rows: 2, required: true %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :zipcode, class: "sr-only" %>
+                        <%= f.text_field :zipcode, placeholder:"Postal Code", class: "form-control transparent col-xs-8", rows: 2, required: true %>
+                    </div>
+                    <div class="form-group">
+                    <%= f.label :password, class: "sr-only"  %>
+                    <% if @minimum_password_length %>
+                     <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %>
+                    <%= f.password_field :password, placeholder:"password", class: "form-control transparent", autocomplete: "off" %><br>
 
-            <div class="form-group">
-            <%= f.label :password, class: "sr-only"  %>
-            <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
-            <% end %><br />
-            <%= f.password_field :password, placeholder:"password", class: "form-control transparent", autocomplete: "off" %>
-
-            <%= f.label :password_confirmation, class: "sr-only"  %><br />
-            <%= f.password_field :password_confirmation, placeholder:"password confirmation", class: "form-control transparent", autocomplete: "off" %>
+                    <%= f.label :password_confirmation, class: "sr-only"  %>
+                    <%= f.password_field :password_confirmation, placeholder:"password confirmation", class: "form-control transparent", autocomplete: "off" %>
+                    </div>
+                </div>
             </div>
             <div class="actions">
             <%= f.submit "Sign up", class: "btn btn-danger" %>
