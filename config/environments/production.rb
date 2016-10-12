@@ -27,10 +27,24 @@ Rails.application.configure do
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
-
+  config.action_mailer.default_url_options = { host: 'beatsexperience.com'}
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
-  config.action_mailer.default_url_options = { host: '138.68.82.92', port: 3000 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
+
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "beatsexperience.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: 'beats.experience@gmail.com',
+    password: 'beats1234key'
+  }
+  
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
