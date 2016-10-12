@@ -1,0 +1,42 @@
+<% content_for :pagename, "Volunteers" %>
+
+<% content_for :breadcrumb do %>
+  <%= bc_link "Home", admin_path %>
+  <%= bc_link "Volunteers" %>
+<% end %>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Volunteers <span class="badge"><%= @applications.count %></span></h3>
+    <% link_to icon("plus-circle"), new_backend_raver_path, class:"btn" %>
+  </div>
+  <div class="panel-body">
+    <div class="table-responsive">
+
+      <table class="table table-condensed table-bordered table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Nom et Prenom (ville)</th>
+            <th>Email (telephone)</th>
+            <th>Competances</th>
+            <th>Motivation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @applications.each do |application| %>
+            <tr>
+              <td><%= content_tag(:i,'',class: "fa fa-mars") if application.raver.gender == 1 %><%= content_tag(:i,'',class: "fa fa-venus") if application.raver.gender == 2 %> <%= link_to application.raver.name, backend_application_path(application) %> <%= application.raver.surname %> (<%= application.raver.town %>)</td>
+              <td><%= application.raver.email %> (<%= application.raver.phone %>)</td>
+              <td><%= application.competance%></td>
+              <td><%= application.motivation %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+

@@ -18,7 +18,8 @@
 <ul>
     <li><%= link_to "Dashboard", admin_path, class: "fa fa-tachometer #{menu_active("pages")}" %></li>
     <li><%= link_to "Ravers", backend_ravers_path, class: "fa fa-user #{menu_active("ravers")}" %></li>
-    <li><%= link_to "Expenses", backend_expenses_path, class: "fa fa-user #{menu_active("expenses")}" %></li>
+    <li><%= link_to "Volunteers", backend_applications_path, class: "fa fa-child #{menu_active("applications")}" %></li>
+    <li><%= link_to "Expenses", backend_expenses_path, class: "fa fa-money #{menu_active("expenses")}" %></li>
     <% if false #current_adminuser.email[-17,17] == "videri-concept.de" %>
     <li><%= link_to "Admin", admin_path, class: "fa fa-shield js-toggle-sub #{menu_active_bool(@menu_scope_admin)}" %>
         <ul class="js-sub" style="<%= menu_block_bool(@menu_scope_admin) %>">

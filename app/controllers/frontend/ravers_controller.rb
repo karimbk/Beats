@@ -10,13 +10,27 @@ class Frontend::RaversController < FrontendController
     def lineup
     end
 
+    def apply
+      @application = Application.new
+    end
+
+    def createapplication
+      application = Application.new
+      application.raver = current_raver
+      if application.update(application_params)
+        redirect_to date_path, notice: "Your Application have been sent, BeAtS will contact you soon!"
+      else
+        redirect_to date_path, alert: "Error, please try again!"
+      end
+    end
+
 
 private 
     def set_raver
 	  	@raver = Raver.find(params[:id])
 	  end	
 
-  	def raver_params
-  		params.require(:raver).permit(:email, :name , :surname , :town, :phone)
+  	def application_params
+  		params.require(:application).permit(:competance, :motivation)
   	end
 end

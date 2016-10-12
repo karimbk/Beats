@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012120322) do
+ActiveRecord::Schema.define(version: 20161012144951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applications", force: :cascade do |t|
+    t.integer  "raver_id"
+    t.string   "competance"
+    t.string   "motivation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "applications", ["raver_id"], name: "index_applications_on_raver_id", using: :btree
 
   create_table "ravers", force: :cascade do |t|
     t.string   "name"
@@ -41,4 +51,5 @@ ActiveRecord::Schema.define(version: 20161012120322) do
   add_index "ravers", ["email"], name: "index_ravers_on_email", unique: true, using: :btree
   add_index "ravers", ["reset_password_token"], name: "index_ravers_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "applications", "ravers"
 end

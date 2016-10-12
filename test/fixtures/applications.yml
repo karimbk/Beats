@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  raver_id: 
+  competance: MyString
+  motivation: MyString
+
+two:
+  raver_id: 
+  competance: MyString
+  motivation: MyString

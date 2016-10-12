@@ -13,6 +13,7 @@
                         <div class="form-group">
                             <%= f.label :email, class: "sr-only" %>
                             <%= f.text_field :email, placeholder:"email" ,class: "form-control transparent",rows: 3, required: true %>
+                            <span style="color:white;">*Some event informations will be communicated via mail, please enter the right one</span>
                         </div>
                     <% end -%>
                     <div class="form-group">
@@ -29,7 +30,8 @@
                     </div>
                     <div class="form-group">
                         <%= f.label :phone, class: "sr-only" %>
-                        <%= f.text_field :phone, placeholder:"Telephone", class: "form-control transparent",rows: 8, required: true %>
+                        <%= f.number_field :phone, placeholder:"Telephone", class: "form-control transparent",rows: 8, required: true %>
+                        <span style="color:white;">*Some event informations will be communicated via mobile, please enter the right one</span>
                     </div>
                 </div>
                 <div class="col-sm-5 col-sm-offset-2 col-xs-12">
@@ -40,6 +42,7 @@
                     <div class="form-group">
                         <%= f.label :street, class: "sr-only" %>
                         <%= f.text_field :street, placeholder:"Street and house number", class: "form-control transparent col-xs-8", rows: 2, required: true %>
+                        <span style="color:white;">*Some gifts (free tickets) could be sent to this adress, please enter the right one</span>
                     </div>
                     <div class="form-group">
                         <%= f.label :zipcode, class: "sr-only" %>

@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   namespace :frontend do
     resources :ravers
   end
+
+  get "application", to: "frontend/ravers#apply"
+  post "application", to: "frontend/ravers#createapplication"
   get "lineup", to: "frontend/ravers#lineup"
   get "date", to: "frontend/ravers#date"
   get "tickets", to: "frontend/ravers#tickets"
@@ -24,6 +27,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   namespace :backend do
     resources :ravers
+    resources :applications
     get "expenses", to: "expenses#index"
    end
   
