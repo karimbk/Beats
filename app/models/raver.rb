@@ -14,4 +14,5 @@ class Raver < ActiveRecord::Base
   	self.town = cap
   	self.save
   end
+
 end

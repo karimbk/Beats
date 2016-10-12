@@ -13,7 +13,7 @@
   </div>
   <div class="panel-body">
         <div class="col-md-6 chart">
-          <%= pie_chart Raver.group(:town).count , colors: ["#08415C", "#c75c5c","#6B818C", "#F4D35E"] %>
+          <%= pie_chart Raver.group(:town).count , colors: ["#1abc9c", "#2ecc71","#3498db", "#9b59b6", "#34495e","#f1c40f" ,"#e67e22","#e74c3c", "#ecf0f1" ,"#95a5a6", "#16a085", "#27ae60", "#2980b9", "#8e44ad", "#2c3e50", "#f39c12", "#d35400", "#c0392b", "#bdc3c7", "#7f8c8d"] %>
         </div>
         <div class="col-md-6">
             <%= line_chart Raver.group_by_day(:created_at).count , colors: ["#c75c5c"] %>
@@ -27,6 +27,7 @@
             <th>Email</th>
             <th>telephone</th>
             <th>Ville</th>
+            <th>Nbr de connections</th>
           </tr>
         </thead>
         <tbody>
@@ -36,6 +37,7 @@
               <td><%= raver.email %></td>
               <td><%= raver.phone %></td>
               <td><%= raver.town %></td>
+              <td><%= raver.sign_in_count %></td>
             </tr>
           <% end %>
         </tbody>

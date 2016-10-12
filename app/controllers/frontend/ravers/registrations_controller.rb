@@ -19,15 +19,19 @@ class Frontend::Ravers::RegistrationsController < Devise::RegistrationsControlle
     def create
         raver = Raver.new
         raver.email = session[:email]
-        if raver.update(sign_up_params)
-            sign_in raver
-            redirect_to date_path
+        if ((sign_up_params[:town].upcase == 'TUNISIE') or (sign_up_params[:town].upcase == 'TUNISIA'))
+          redirect_to new_raver_registration_path, alert: 'Tunisia is not a town.'
         else
-            raver.errors.each do |error|
-                puts error
-            end
-            flash[:notice] = flash[:notice].to_a.concat raver.errors.full_messages
-            redirect_to new_raver_registration_path
+          if raver.update(sign_up_params)
+              sign_in raver
+              redirect_to date_path
+          else
+              raver.errors.each do |error|
+                  puts error
+              end
+              flash[:notice] = flash[:notice].to_a.concat raver.errors.full_messages
+              redirect_to new_raver_registration_path
+          end
         end
     end
 

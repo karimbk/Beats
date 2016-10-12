@@ -16,18 +16,37 @@
       <%end%>
   </div>
   <div class="panel-body">
-    <dl class="dl-horizontal">
-      <dt>Nom:</dt>
-      <dd><%= @raver.name %></dd>
-      <dt>Prenom:</dt> 
-      <dd><%= @raver.surname %></dd>
-      <dt>Email:</dt>
-      <dd><%= @raver.email %></dd>
-      <dt>telephone:</dt>
-      <dd><%= @raver.phone %></dd>
-      <dt>Ville:</dt>
-      <dd><%= @raver.town %></dd>
-    </dl>
+    <div class="col-sm-6 col-xs-12">
+      <dl class="dl-horizontal">
+        <dt>Nom:</dt>
+        <dd><%= @raver.name %></dd>
+        <dt>Prenom:</dt> 
+        <dd><%= @raver.surname %></dd>
+        <dt>Email:</dt>
+        <dd><%= @raver.email %></dd>
+        <dt>telephone:</dt>
+        <dd><%= @raver.phone %></dd>
+        <dt>Adress:</dt>
+        <dd><%= @raver.street %></dd>
+        <dt>Code postale:</dt>
+        <dd><%= @raver.zipcode %></dd>
+
+        <dt>Ville:</dt>
+        <dd><%= @raver.town %></dd>
+      </dl>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+      <dl class="dl-horizontal">
+        <dt>Inscrit le::</dt>
+        <dd><%= @raver.created_at %></dd>
+        <dt>Derniere connection:</dt> 
+        <dd><%= @raver.last_sign_in_at %></dd>
+        <dt>derniere ip:</dt>
+        <dd><%= @raver.last_sign_in_ip %></dd>
+        <dt>Nbr totale de connections:</dt>
+        <dd><%= @raver.sign_in_count %></dd>
+      </dl>
+    </div>
   </div>
 </div>
 
