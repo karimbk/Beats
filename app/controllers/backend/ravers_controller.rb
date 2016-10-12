@@ -1,7 +1,7 @@
 class Backend::RaversController < BackendController
 	
 	def index
-		@ravers = Raver.all 
+		@ravers = Raver.order(created_at: :desc) 
 	end
 
 	def show
