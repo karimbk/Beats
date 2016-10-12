@@ -21,7 +21,7 @@ class Backend::RaversController < BackendController
 
 
     def raver_param
-    	params.require(:raver).permit(:name,:surname,:email,:town,:phone)
+    	params.require(:raver).permit(:name,:surname,:email,:town,:phone,:gender)
     end
 	def destroy
 		@raver = Raver.find(params[:id])
