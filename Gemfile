@@ -36,6 +36,7 @@ gem 'chartist_js', '~> 0.0.2'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'devise'
+gem 'devise_lastseenable'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'thin'

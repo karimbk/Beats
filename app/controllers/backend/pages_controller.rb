@@ -15,7 +15,9 @@ class Backend::PagesController < BackendController
 				if raver.last_sign_in_at.strftime("%Y%m%d") == Time.now.strftime("%Y%m%d")
 					@signed_in_today += 1
 				end
-				if raver.last_sign_in_at != raver.current_sign_in_at
+			end
+			if raver.last_seen.present?
+				if (Time.now - raver.last_seen < 5.minutes)
 					@signed_in_now += 1
 				end
 			end

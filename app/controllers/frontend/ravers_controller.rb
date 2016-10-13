@@ -1,5 +1,5 @@
 class Frontend::RaversController < FrontendController
-  before_action :authenticate_raver!
+  before_action :authenticate_raver!, :set_lastseen
     
     def date
     end
@@ -33,4 +33,9 @@ private
   	def application_params
   		params.require(:application).permit(:competance, :motivation)
   	end
+
+    def set_lastseen
+      current_raver.last_seen = DateTime.now
+      current_raver.save
+    end
 end

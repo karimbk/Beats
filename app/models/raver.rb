@@ -3,7 +3,7 @@ class Raver < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :applications
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :lastseenable
 
   after_create :capitalise_town
 

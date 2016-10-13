@@ -8,13 +8,13 @@
 <div class="panel panel-default">
   <div class="panel-heading container-row">
         <div class="btn btn-danger btn-lg col-sm-3 col-xs-12 tacho">Signed in today <span class="badge"><%= @signed_in_today %></span></div>
-        <div class="btn btn-primary btn-lg col-sm-3 col-xs-12 tacho">Signed in Now <span class="badge"><%= @signed_in_now %></span></div>
+        <div class="btn btn-success btn-lg col-sm-3 col-xs-12 tacho">Online Now <span class="badge"><%= @signed_in_now %></span></div>
         <%= link_to backend_applications_path do %>
             <div class="btn btn-warning btn-lg col-sm-3 col-xs-12 tacho">Volunteers <span class="badge"><%= 
             @applications.count %></span></div>
         <% end -%>
         <%= link_to backend_ravers_path do %>
-            <div class="btn btn-success btn-lg col-sm-2 col-xs-12 tacho">Ravers <span class="badge"><%= 
+            <div class="btn btn-primary btn-lg col-sm-2 col-xs-12 tacho">Ravers <span class="badge"><%= 
             @ravers.count %></span></div>
         <% end -%>
     <% link_to icon("plus-circle"), new_backend_raver_path, class:"btn" %>
