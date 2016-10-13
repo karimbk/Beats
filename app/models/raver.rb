@@ -7,7 +7,6 @@ class Raver < ActiveRecord::Base
 
   after_create :capitalise_town
 
-
   private
 
   def capitalise_town

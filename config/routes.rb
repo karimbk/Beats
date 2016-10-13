@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
 
-  get "admin", to: "backend#index"
+  get "admin", to: "backend/pages#index"
 
   namespace :frontend do
     resources :ravers
