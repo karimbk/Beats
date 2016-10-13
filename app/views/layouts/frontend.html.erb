@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-    <title>BeatsExp</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <title>BeaAtS Experience - Tunisia</title>
+    <meta name="description" content="Beats experience Tunisia. Electronic music Festival Techno Tech house Deephouse.">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <!-- Font links -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Pacifico">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
@@ -39,62 +39,63 @@
   
     <!-- video background-->
     <% if !(action_name == 'tickets' or action_name == 'lineup' or action_name == 'date') %>
-    <video id="video-background" class="<%= yield :video_class %>" preload="none" autoplay="true" loop="loop" muted="muted" volume="0">
-      
-      <source src="<%= yield :video_background %>" type="video/mp4">
-      <source src="img/beats.m4v">
-      <source src="img/beats.webm" type="video/webm">
-      <source src="img/beats.theora.ogv" type="video/ogg">
-      Browser doesen't support this graphic
+      <video id="video-background" class="<%= yield :video_class %>" preload="none" autoplay="true" loop="loop" muted="muted" volume="0">
+        <source src="<%= yield :video_background %>" type="video/mp4">
+        <source src="img/beats.m4v">
+        <source src="img/beats.webm" type="video/webm">
+        <source src="img/beats.theora.ogv" type="video/ogg">
+        Browser doesen't support this graphic
     </video>
   <% end %>
-    
+
+  <!-- Beats Nav-bar --> 
   <div class="overlay"></div>
-  <div id="content" class="container">
-  <% if !(action_name == 'new' and (controller_name == 'sessions' or controller_name = "registrations")) %>
-    <a onclick="openNav()" class="mobileNavBar fa fa-bars hidden-sm hidden-md hidden-lg"></a>
-    <p class="social white col-xs-8 col-xs-offset-4 col-sm-3 col-sm-offset-9 text-center">
+    <div id="content" class="container">
+      <% if !(action_name == 'new' and (controller_name == 'sessions' or controller_name = "registrations")) %>
+        <a onclick="openNav()" class="mobileNavBar fa fa-bars hidden-sm hidden-md hidden-lg"></a>
+        <p class="social white col-xs-8 col-xs-offset-4 col-sm-3 col-sm-offset-9 text-center">
+            <% if raver_signed_in? %> 
+                Logout
+                <%= link_to  destroy_raver_session_path , method: :delete, class: "twitter" do %>
+                    <i class="fa fa-sign-out " aria-hidden="true"></i>
+                <% end %>
+            <% else %>
+                Login
+                <%= link_to  new_raver_session_path , class: "instagram" do %>
+                     <i class="fa fa-heart " aria-hidden="true"></i>
+                <% end %>
+            <% end %>
+                <a href="https://www.facebook.com/beats.autonomica/" target="_blank" title="BeAtS Facebook Page" class="facebook"><i class="fa fa-facebook"></i></a>
+        </p>
+        <% end -%>
         <% if raver_signed_in? %> 
-            Logout
-            <%= link_to  destroy_raver_session_path , method: :delete, class: "twitter" do %>
-                <i class="fa fa-sign-out " aria-hidden="true"></i>
-            <% end %>
-        <% else %>
-            Login
-            <%= link_to  new_raver_session_path , class: "instagram" do %>
-                 <i class="fa fa-heart " aria-hidden="true"></i>
-            <% end %>
-        <% end %>
-            <a href="https://www.facebook.com/beats.autonomica/" target="_blank" title="BeAtS Facebook Page" class="facebook"><i class="fa fa-facebook"></i></a>
-    </p>
-    <% end -%>
-    <% if raver_signed_in? %> 
-      <div class="beats-nav container-row hidden-xs">
-          <ul class="nav nav-pills">
-            <li role="presentation" class="nav-el col-sm-2 col-sm-offset-3 col-xs-4 text-center <%= beats_menu_activ("lineup")%> "><%= link_to "LINE UP", lineup_path, class: "nav-el" %></li>
-            <li role="presentation" class="col-sm-2 col-xs-4 text-center  <%= beats_menu_activ("date") %>"><%= link_to "DATE & LOCATION", date_path %></li>
-            <li role="presentation" class="col-sm-2 col-xs-3 text-center <%= beats_menu_activ("tickets") %>"><%= link_to 'TICKETS', tickets_path %></li>
-          </ul>
-      </div>
-    <% end -%>
-    <% flash.each do |name, msg| %>
-        <% if msg.is_a?(String) %>
-            <div id="notice1" class="col-md-10 col-md-offset-1 transparent alert alert-<%= name == "notice" ? "success" : "danger" %>" style="margin-top:68px;">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <%= content_tag :div, msg, id:"flash_#{name}" %>
-            </div>
-            <br>
-        <% else %>
-            <% msg.each do |message| %>
-                <div id="notice2" class="col-md-8 col-md-offset-2 transparent alert alert-<%= name == "notice" ? "success" : "danger" %>" style="margin-top:25px; position:relative;">
+          <div class="beats-nav container-row hidden-xs">
+              <ul class="nav nav-pills">
+                <li role="presentation" class="nav-el col-sm-2 col-sm-offset-2 text-center <%= beats_menu_activ("lineup")%> "><%= link_to "LINE UP", lineup_path, class: "nav-el" %></li>
+                <li role="presentation" class="col-sm-2  text-center  <%= beats_menu_activ("date") %>"><%= link_to "DATE & LOCATION", date_path %></li>
+                <li role="presentation" class="col-sm-2  text-center <%= beats_menu_activ("tickets") %>"><%= link_to 'TICKETS', tickets_path %></li>
+                <li role="presentation" class="col-sm-2  text-center <%= beats_menu_activ("apply") %>"><%= link_to 'APPLY AS VOLUNTEER', application_path, class: "menu-new" %></li>
+              </ul>
+          </div>
+        <% end -%>
+        <% flash.each do |name, msg| %>
+            <% if msg.is_a?(String) %>
+                <div id="notice1" class="col-md-10 col-md-offset-1 transparent alert alert-<%= name == "notice" ? "success" : "danger" %>" style="margin-top:68px;">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <%= content_tag :div, message, id:"flash_#{name}" %>
+                    <%= content_tag :div, msg, id:"flash_#{name}" %>
                 </div>
-            <% end %>       
-        <% end %>
-    <% end %>  
-    <%= yield %>
-    </div>
+                <br>
+            <% else %>
+                <% msg.each do |message| %>
+                    <div id="notice2" class="col-md-8 col-md-offset-2 transparent alert alert-<%= name == "notice" ? "success" : "danger" %>" style="margin-top:25px; position:relative;">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <%= content_tag :div, message, id:"flash_#{name}" %>
+                    </div>
+                <% end %>       
+            <% end %>
+        <% end %>  
+        <%= yield %>
+      </div>
   <div class="footer">
     <div class="container">
       <div class="row">

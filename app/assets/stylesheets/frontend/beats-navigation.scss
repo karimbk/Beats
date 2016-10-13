@@ -5,6 +5,41 @@
     width: 100%;
     z-index: 1;
 
+    .menu-new{
+    -webkit-animation: color-change 1s infinite;
+    -moz-animation: color-change 1s infinite;
+    -o-animation: color-change 1s infinite;
+    -ms-animation: color-change 1s infinite;
+    animation: color-change 4s ;
+    color: white;
+    }
+
+   @-webkit-keyframes color-change {
+        0% { color: #f4b51a; }
+        50% { color: #BF2255; }
+        100% { color: #28CFD0; }
+    }
+    @-moz-keyframes color-change {
+        0% { color: f4b51a; }
+        50% { color: #BF2255; }
+        100% { color: #28CFD0; }
+    }
+    @-ms-keyframes color-change {
+        0% { color: f4b51a; }
+        50% { color: #BF2255; }
+        100% { color: #28CFD0; }
+    }
+    @-o-keyframes color-change {
+        0% { color: f4b51a; }
+        50% { color: #BF2255; }
+        100% { color: #28CFD0; }
+    }
+    @keyframes color-change {
+        0% { color: f4b51a; }
+        50% { color: #BF2255; }
+        100% { color: #28CFD0; }
+    }
+
     li:hover{
     	background-color:none;
     	border-bottom: 2px solid white;
