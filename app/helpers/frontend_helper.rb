@@ -7,4 +7,5 @@ module FrontendHelper
   def set_black_footer
     return 'black-text' if action_name == 'index'
   end
+
 end

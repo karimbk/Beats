@@ -2,6 +2,11 @@ class Frontend::RaversController < FrontendController
   before_action :authenticate_raver!, :set_lastseen
     
     def date
+      @class =""
+      if current_raver.sign_in_count == 1 and !session[:visited].present?
+        @class = "modal-open"
+        session[:visited] = "visited"
+      end
     end
 
     def tickets
