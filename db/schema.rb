@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013114844) do
+ActiveRecord::Schema.define(version: 20161014132819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,13 @@ ActiveRecord::Schema.define(version: 20161013114844) do
     t.integer  "raver_id"
     t.string   "competance"
     t.string   "motivation"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.json     "portfolios"
+    t.string   "pagelink"
+    t.string   "language"
+    t.string   "availability"
+    t.string   "car"
   end
 
   add_index "applications", ["raver_id"], name: "index_applications_on_raver_id", using: :btree
@@ -47,6 +52,7 @@ ActiveRecord::Schema.define(version: 20161013114844) do
     t.string   "street"
     t.string   "zipcode"
     t.datetime "last_seen"
+    t.json     "portfolios"
   end
 
   add_index "ravers", ["email"], name: "index_ravers_on_email", unique: true, using: :btree

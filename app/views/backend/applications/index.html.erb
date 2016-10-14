@@ -21,6 +21,8 @@
             <th>Email (telephone)</th>
             <th>Competances</th>
             <th>Motivation</th>
+            <th>Langues</th>
+            <th>Disponibilite</th>
           </tr>
         </thead>
         <tbody>
@@ -28,8 +30,10 @@
             <tr>
               <td><%= content_tag(:i,'',class: "fa fa-mars") if application.raver.gender == 1 %><%= content_tag(:i,'',class: "fa fa-venus") if application.raver.gender == 2 %> <%= link_to application.raver.name, backend_application_path(application) %> <%= application.raver.surname %> (<%= application.raver.town %>)</td>
               <td><%= application.raver.email %> (<%= application.raver.phone %>)</td>
-              <td><%= application.competance%></td>
+              <td><%= application.competance%> <%= content_tag(:i,'',class: "fa fa-paperclip") if application.portfolios? %> <%= content_tag(:i,'',class: "fa fa-facebook-square") if application.pagelink.present? %> <%= content_tag(:i,'',class: "fa fa-car") if application.car == 'yes' %></td>
               <td><%= application.motivation %></td>
+              <td><%= application.language %></td>
+              <td><%= application.availability %></td>
             </tr>
           <% end %>
         </tbody>

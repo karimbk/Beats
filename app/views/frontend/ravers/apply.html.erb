@@ -3,7 +3,8 @@
 <% content_for :video_class, "not-centred" %>
 
 <div class=" list-new">
-    <h3 class="mailing-list-heading"><i class="fa fa-heart" style="font-size:50px;"aria-hidden="true"></i><br><br>BeAtS volunteers application</h3>
+    <h3 class="mailing-list-heading"><i class="fa fa-heart" style="font-size:50px;"aria-hidden="true"></i><br><br>BeAtS volunteers application<br><h5 style="margin-bottom:40px;">All kinds of help are needed: Artist, design, painting, decoration, light, bricolage, Electricity...</h5></h3>
+
     <div class="row">
         <%= form_for(@application, url: application_path, :html => {class: 'form-horizontal col-xs-12 col-sm-6 col-sm-offset-3' }) do |f| %>
             <div class="row">
@@ -13,8 +14,31 @@
                         <%= f.text_field :competance, placeholder:"Artistical competances" ,class: "form-control transparent",rows: 3, required: true %>
                     </div>
                     <div class="form-group">
+                        <%= f.label "Portfolio: upload some photos of your work (optional)", style:"color:white;" %>
+                        <%= f.file_field :portfolios, multiple: true, class: "form-control transparent" %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :pagelink, class: "sr-only" %>
+                        <%= f.text_field :pagelink, placeholder:"Facebook or Website link to your work (optional)" ,class: "form-control transparent",rows: 3 %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :languages, class: "sr-only" %>
+                        <%= f.text_field :language, placeholder:"Spoken languages (level 1..5) Exp: Arabic(5), French(4)" ,class: "form-control transparent",rows: 3 %>
+                    </div>
+                    <div class="form-group">
                         <%= f.label :motivation, class: "sr-only" %>
                         <%= f.text_area :motivation , placeholder:"Some motivation words" , class: "form-control transparent",rows: 3, required: true %>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <%= f.label 'do you have a car?', style:"color:white;"%><br>
+                        <%= f.radio_button :car , "yes", style:"color:white;" %>
+                        <%= f.label 'Yes', style:"color:white;" %><br>
+                        <%= f.radio_button :car , "no", style:"color:white;" %>
+                        <%= f.label 'No', style:"color:white;" %>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <%= f.label 'what is your availability?', style:"color:white;"%>
+                        <%= f.select :availability, ["Every day", "afternoons only", "weekends only", "just few days"], {}, {class: "selectpicker form-control transparent", title: "please choose" } %>
                     </div>
                 </div>
             </div>

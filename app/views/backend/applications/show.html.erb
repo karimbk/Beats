@@ -17,33 +17,52 @@
       <%end%>
   </div>
   <div class="panel-body">
-    <div class="col-sm-6 col-xs-12">
-      <dl class="dl-horizontal">
-        <dt>Nom:</dt>
-        <dd><%= @application.raver.name %></dd>
-        <dt>Prenom:</dt> 
-        <dd><%= @application.raver.surname %></dd>
-        <dt>Email:</dt>
-        <dd><%= @application.raver.email %></dd>
-        <dt>telephone:</dt>
-        <dd><%= @application.raver.phone %></dd>
-        <dt>Adress:</dt>
-        <dd><%= @application.raver.street %></dd>
-        <dt>Code postale:</dt>
-        <dd><%= @application.raver.zipcode %></dd>
-        <dt>Ville:</dt>
-        <dd><%= @application.raver.town %></dd>
-      </dl>
+    <div class="row">
+      <div class="col-sm-6 col-xs-12">
+        <dl class="dl-horizontal">
+          <dt>Nom:</dt>
+          <dd><%= @application.raver.name %></dd>
+          <dt>Prenom:</dt> 
+          <dd><%= @application.raver.surname %></dd>
+          <dt>Email:</dt>
+          <dd><%= @application.raver.email %></dd>
+          <dt>telephone:</dt>
+          <dd><%= @application.raver.phone %></dd>
+          <dt>Adress:</dt>
+          <dd><%= @application.raver.street %></dd>
+          <dt>Code postale:</dt>
+          <dd><%= @application.raver.zipcode %></dd>
+          <dt>Ville:</dt>
+          <dd><%= @application.raver.town %></dd>
+        </dl>
+      </div>
+      <div class="col-sm-6 col-xs-12">
+        <dl class="dl-horizontal">
+          <dt>Competances artistiques:</dt>
+          <dd><%= @application.competance %></dd>
+          <dt>Lettre de motivation:</dt> 
+          <dd><%= @application.motivation %></dd>
+          <dt>Lien page:</dt> 
+          <% if @application.pagelink.present? %>
+            <dd><a href="<%= @application.pagelink %>" target="_blank"><%= @application.pagelink %></a></dd>
+          <% else %>
+            <dd>non delivree</dd>
+          <% end -%>
+          <dt>Langues:</dt> 
+          <dd><%= @application.language %></dd>
+          <dt>Voiture:</dt> 
+          <dd><%= @application.car %></dd>
+          <dt>Candidature le:</dt>
+          <dd><%= @application.created_at %></dd>
+        </dl>
+      </div>
     </div>
-    <div class="col-sm-6 col-xs-12">
-      <dl class="dl-horizontal">
-        <dt>Competances artistiques:</dt>
-        <dd><%= @application.competance %></dd>
-        <dt>Lettre de motivation:</dt> 
-        <dd><%= @application.motivation %></dd>
-        <dt>Candidature le:</dt>
-        <dd><%= @application.created_at %></dd>
-      </dl>
+    <div class="row">
+      <% @application.portfolios.each do |portfolio| %>
+        <a class="col-sm-4 col-xs-12" href="<%= portfolio.url %>" target="_blank">
+            <%= image_tag portfolio, width: "100%"%>
+        </a>
+      <% end -%>
     </div>
   </div>
 </div>

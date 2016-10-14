@@ -36,7 +36,7 @@ private
 	  end	
 
   	def application_params
-  		params.require(:application).permit(:competance, :motivation)
+  		params.require(:application).permit(:competance, :motivation,  {portfolios: []}, :pagelink, :language, :availability, :car)
   	end
 
     def set_lastseen

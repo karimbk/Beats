@@ -6,6 +6,7 @@ class Raver < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :lastseenable
 
   after_create :capitalise_town
+ 
 
   private
 
