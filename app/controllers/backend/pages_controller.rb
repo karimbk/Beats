@@ -1,6 +1,7 @@
 class Backend::PagesController < BackendController
 
 	def index
+		@hostname = request.host
 		@applications = Application.all
 		signin_analytics
 	end
