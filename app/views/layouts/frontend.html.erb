@@ -73,8 +73,8 @@
               <ul class="nav nav-pills">
                 <li role="presentation" class="nav-el col-sm-2 col-sm-offset-2 text-center <%= beats_menu_activ("lineup")%> "><%= link_to "LINE UP", lineup_path, class: "nav-el" %></li>
                 <li role="presentation" class="col-sm-2  text-center  <%= beats_menu_activ("date") %>"><%= link_to "DATE & LOCATION", date_path %></li>
-                <li role="presentation" class="col-sm-2  text-center <%= beats_menu_activ("tickets") %>"><%= link_to 'TICKETS', tickets_path %></li>
-                <li role="presentation" class="col-sm-2  text-center <%= beats_menu_activ("apply") %>"><%= link_to 'APPLY AS VOLUNTEER', application_path, class: "menu-new" %></li>
+                <li role="presentation" class="col-sm-2  text-center <%= beats_menu_activ("tickets") %>"><%= link_to 'TICKETS', tickets_path, class: "menu-new" %></li>
+                <li role="presentation" class="col-sm-2  text-center <%= beats_menu_activ("apply") %>"><%= link_to 'APPLY AS VOLUNTEER', application_path %></li>
               </ul>
           </div>
         <% end -%>
