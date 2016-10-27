@@ -41,7 +41,13 @@
         <a href="http://192.168.2.123:8888/" >link to teskerti testing </a>
     </div>
 </div>
+
+<!-- script for teskerti -->
+<?php 
+    $ref = $_SERVER['HTTP_REFERER']; 
+    $refData = parse_url($ref);
+?>
 <script type="text/javascript">
-    var hostname = location.hostname;
-    console.log(hostname)
+    var hostname = "<?php echo $refData['host']; ?>";
+    console.log(hostname);
 </script>
