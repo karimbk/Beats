@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :ravers, controllers: {
-      sessions: 'frontend/ravers/sessions',
-      registrations: 'frontend/ravers/registrations',
-      passwords: 'frontend/ravers/passwords'
+    sessions: 'frontend/ravers/sessions',
+    registrations: 'frontend/ravers/registrations',
+    passwords: 'frontend/ravers/passwords'
   }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -28,6 +28,17 @@ Rails.application.routes.draw do
   namespace :backend do
     resources :ravers
     resources :applications
+    resources :tickets do
+      collection do
+        post 'generate_ticket'
+      end
+      member do
+        post 'give'
+        post 'pay'
+        post 'check'
+        post 'reopen'
+      end
+    end
     get "expenses", to: "expenses#index"
    end
   

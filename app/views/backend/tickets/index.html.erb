@@ -1,0 +1,66 @@
+<% content_for :pagename, "Tickets for German friends" %>
+
+<% content_for :breadcrumb do %>
+  <%= bc_link "Home", admin_path %>
+  <%= bc_link "Tickets" %>
+<% end %>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Tickets for German friends <span class="badge"><%= @tickets.count %></span></h3>
+    <button id="myBtn" class="btn btn-primary">Generate new ticket</button>
+  </div>
+  <div class="panel-body">
+    <div class="table-responsive">
+
+      <table class="table table-condensed table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Ticket ID</th>
+            <th>Ticket code</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tickets.each do |ticket| %>
+            <tr class="<%= 'mark-red' if ticket.status == 'out' %>">
+              <td><%= ticket.id %></td>
+              <td><%= ticket.code %></td>
+              <td><%= ticket.status %> | <%= link_to icon("hand-lizard-o"), give_backend_ticket_path(ticket), method: :post %>
+                                       | <%= link_to icon("money"), pay_backend_ticket_path(ticket), method: :post %>
+                                       | <%= link_to icon("check-circle"), check_backend_ticket_path(ticket), method: :post %>
+                                       | <%= link_to icon("external-link-square"), reopen_backend_ticket_path(ticket), method: :post %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- password Modal -->
+
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content tex-center">
+    <span class="close">x</span>
+    <%= form_tag(generate_ticket_backend_tickets_path, :method=>'post', class: "text-center") do %>
+      <p>
+        please give the password for generating tickets:<br /><br />
+        <%= password_field_tag "token" %>
+      </p>
+      <p>
+        <%= submit_tag 'Confirm' %>
+      </p>
+    <% end -%>
+  </div>
+
+</div>
+
+
+
