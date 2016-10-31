@@ -1,0 +1,12 @@
+
+<%=form_for [:backend,@guest] , :html => {class: 'form-horizontal col-xs-12 col-sm-2 col-sm-offset-5' } do |f| %>
+    <div class="form-group">
+        <%= f.label "Nom et prenom", class: "" %>
+        <%= f.text_field :name, placeholder:"Name" ,class: "form-control transparent",rows: 3, required: true %>
+    </div>
+    <div class="form-group">
+        <%= f.label "Nombre de personnes", class: "" %>
+        <%= f.number_field :number, placeholder:"Nbr", class: "form-control ", rows: 3, required: true %>
+    </div>
+        <%= f.submit "Modifier", class: "col-xs-8 col-xs-offset-2 btn btn-danger" %>
+<% end %>

@@ -1,0 +1,18 @@
+<% content_for :pagename, "New Guest" %>
+
+<% content_for :breadcrumb do %>
+  <%= bc_link "Home", admin_path %>
+  <%= bc_link "Guestlist" , backend_guestlists_path %>
+  <%= bc_link "New" %>
+<% end %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">New Guest <span class="badge"></span></h3>
+  </div>
+  <div class="panel-body">
+    <div class="row container">
+            <%= render 'form' %>
+        </div>
+  </div>
+</div>

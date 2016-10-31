@@ -1,0 +1,40 @@
+<% content_for :pagename, "Guestlist" %>
+
+<% content_for :breadcrumb do %>
+  <%= bc_link "Home", admin_path %>
+  <%= bc_link "Guestlist" %>
+<% end %>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Guestlist <span class="badge"><%= @guests.count %></span></h3>
+  <%= link_to 'Add a guest', new_backend_guestlist_path , class: "btn btn-primary" %>
+  </div>
+  <div class="panel-body">
+    <div class="table-responsive">
+
+      <table class="table table-condensed table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Guest Name and surname</th>
+            <th>Persons number</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @guests.each do |guest| %>
+            <tr class="<%= 'mark-red' if guest.status == 'out' %>">
+              <td><%= guest.name %></td>
+              <td><%= guest.number %></td>
+              <td><%= guest.status %> | <%= link_to icon("edit"), edit_backend_guestlist_path(guest) %>
+                                      | <%= link_to icon("trash"), backend_guestlist_path(guest), method: :delete , data: {confirm: "etes vous sure?"}  %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

@@ -23,11 +23,13 @@ Rails.application.routes.draw do
   get "date", to: "frontend/ravers#date"
   get "tickets", to: "frontend/ravers#tickets"
   post "ravers/new",  to: "frontend/ravers#new"
+  get "guestlist", to: "backend/guestlistls#index"
 
   # You can have the root of your site routed with "root"
   namespace :backend do
     resources :ravers
     resources :applications
+    resources :guestlists
     resources :tickets do
       collection do
         post 'generate_ticket'
