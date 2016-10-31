@@ -42,6 +42,7 @@ Rails.application.routes.draw do
       end
     end
     get "expenses", to: "expenses#index"
+    get "users_online", to: "pages#online_users"
    end
   
   # Example of regular route:

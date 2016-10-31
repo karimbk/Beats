@@ -1,0 +1,36 @@
+<% content_for :pagename, "Users Online" %>
+
+<% content_for :breadcrumb do %>
+  <%= bc_link "Home", admin_path %>
+  <%= bc_link "Ravers" %>
+<% end %>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Users online <span class="badge"><%= @onlinenow_results.count %></span></h3>
+    </div>
+    <div class="panel-body">
+        <div class="col-xs-6">
+            <h4>Online now:</h4><br>
+            <ul>
+                <% @onlinenow_results.each do |raver| %>
+                    <li><%= content_tag(:i,'',class: "fa fa-mars") if raver.gender == 1 %><%= content_tag(:i,'',class: "fa fa-venus") if raver.gender == 2 %> <%= link_to raver.name, backend_raver_path(raver) %> <%= raver.surname %>
+                    </li>
+                <% end -%>
+            </ul>
+        </div>
+        <div class="col-xs-6">
+            <h4>Online today (all):</h4><br>
+            <ul>
+                <% @onlinetoday_results.each do |raver| %>
+                    <li><%= content_tag(:i,'',class: "fa fa-mars") if raver.gender == 1 %><%= content_tag(:i,'',class: "fa fa-venus") if raver.gender == 2 %> <%= link_to raver.name, backend_raver_path(raver) %> <%= raver.surname %>
+                    </li>
+                <% end -%>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
