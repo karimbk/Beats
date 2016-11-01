@@ -99,6 +99,12 @@ class Raver < ActiveRecord::Base
     when /BOUZELFA/
       self.region = 'NABEUL' 
       self.save
+    when /KORBA/
+      self.region = 'NABEUL' 
+      self.save
+    when /HAMMAMET/
+      self.region = 'HAMMAMET' # Region Hammamet
+      self.save
     when /BIZERTE/
       self.region = 'BIZERTE' # Region Bizerte
       self.save
