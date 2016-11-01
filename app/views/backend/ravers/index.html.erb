@@ -10,6 +10,7 @@
   <div class="panel-heading">
     <h3 class="panel-title">Ravers <span class="badge"><%= @ravers.count %></span></h3>
     <% link_to icon("plus-circle"), new_backend_raver_path, class:"btn" %>
+    <%= link_to "clean data base", clean_db_backend_ravers_path, method: :post, class:"btn btn-primary" %>
   </div>
   <div class="panel-body">
         <div class="col-md-6 chart">
@@ -27,6 +28,7 @@
             <th>Email</th>
             <th>telephone</th>
             <th>Ville</th>
+            <th>Region</th>
             <th>Nbr de connections</th>
           </tr>
         </thead>
@@ -37,11 +39,13 @@
               <td><%= raver.email %></td>
               <td><%= raver.phone %></td>
               <td><%= raver.town %></td>
+              <td><%= raver.region %></td>
               <td><%= raver.sign_in_count %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
+      <%= will_paginate @ravers, renderer: BootstrapPagination::Rails %>
     </div>
   </div>
 </div>

@@ -36,9 +36,9 @@ class Backend::PagesController < BackendController
 	end
 
 	def town_analytics
-		ravers = Raver.order(town: :desc)
-		@stat_town = ravers.group(:town).limit(20).count
-		hash = ravers.group(:town).offset(20).count
+		ravers = Raver.order(region: :desc)
+		@stat_town = ravers.group(:region).limit(20).count
+		hash = ravers.group(:region).offset(20).count
 		rest = hash.inject(0) { |sum, tuple| sum += tuple[1] }
 		@stat_town[:autre] = rest
 	end

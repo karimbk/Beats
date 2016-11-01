@@ -1,10 +1,10 @@
 class Backend::RaversController < BackendController
 	
 	def index
-		@ravers = Raver.order(created_at: :desc)
-		ravers = Raver.order(town: :desc)
-		@stat_town = ravers.group(:town).limit(20).count
-		hash = ravers.group(:town).offset(20).count
+		@ravers = Raver.order(created_at: :desc).paginate(:page => params[:page], :per_page => 100)
+		ravers = Raver.order(region: :desc)
+		@stat_town = ravers.group(:region).limit(20).count
+		hash = ravers.group(:region).offset(20).count
 		rest = hash.inject(0) { |sum, tuple| sum += tuple[1] }
 		@stat_town[:autre] = rest
 	end
@@ -25,9 +25,6 @@ class Backend::RaversController < BackendController
      end
 
 
-    def raver_param
-    	params.require(:raver).permit(:name,:surname,:email,:town,:phone,:gender)
-    end
 
 	def destroy
 		@raver = Raver.find(params[:id])
@@ -36,5 +33,19 @@ class Backend::RaversController < BackendController
 		else
 			redirect_to bakend_raver_controller(@raver), notice: "problem! raver n'a pas ete suprrime"
         end
-	end 	
+	end 
+
+	def clean_db
+		ravers = Raver.all
+		ravers.each do |raver|
+			raver.set_region
+		end
+		redirect_to backend_ravers_path, notice: "Database cleaned, and regions set"
+	end
+
+	private
+
+    def raver_param
+    	params.require(:raver).permit(:name,:surname,:email,:town,:phone,:gender)
+    end
 end

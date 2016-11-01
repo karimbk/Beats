@@ -14,7 +14,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 
 gem 'font-awesome-sass'	# Frontend: Font Awesome is awesome!
-
+gem 'will_paginate-bootstrap'
+gem 'will_paginate'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem "chartkick"

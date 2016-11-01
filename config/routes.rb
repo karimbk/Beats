@@ -27,7 +27,11 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   namespace :backend do
-    resources :ravers
+    resources :ravers do 
+      collection do
+        post 'clean_db'
+      end
+    end
     resources :applications
     resources :guestlists
     resources :tickets do
