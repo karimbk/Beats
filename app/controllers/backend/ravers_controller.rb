@@ -1,7 +1,7 @@
 class Backend::RaversController < BackendController
 	
 	def index
-		@ravers = Raver.order(created_at: :desc).paginate(:page => params[:page], :per_page => 100)
+		@ravers = Raver.order(created_at: :desc).paginate(:page => params[:page], :per_page => 30)
 		ravers = Raver.order(region: :desc)
 		@stat_town = ravers.group(:region).limit(20).count
 		hash = ravers.group(:region).offset(20).count
