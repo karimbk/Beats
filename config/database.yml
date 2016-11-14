@@ -13,8 +13,8 @@ development:
   encoding: unicode
   database: beats_development
   host: localhost
-  username: postgres
-  password: mon1papier
+  username: 
+  password: 
   pool: 5
 
 
